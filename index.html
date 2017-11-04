@@ -5,7 +5,91 @@
         <title>CryptoDoc</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style id="/rumkin/cryptodoc-org/style.css">html {
+        <style id="/rumkin/cryptodoc-org/style.css">
+.slideshow {
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.slides {
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+
+    width: 100%;
+    min-height: 400px;
+    max-height: 600px;
+    height: auto;
+
+    background-color: #eee;
+    box-sizing: border-box;
+    border-radius: .3rem;
+}
+
+.position-indicator {
+    position: absolute;
+    z-index: 2;
+
+    bottom: 0;
+    height: 3px;
+
+    background-color: #007bff;
+    transition: left 1s ease;
+}
+
+.slideshow-controls {
+    flex: 0;
+    margin: 1rem 0;
+}
+
+.slide {
+    position: absolute;
+    box-sizing: border-box;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+
+    opacity: 0;
+}
+
+.transit {
+    transition: left 1s, opacity 1s;
+}
+
+.pane {
+    box-sizing: border-box;
+    padding: 20px;
+    height: 100%;
+
+    background-color: white;
+    box-shadow: 0 0 7px 0 rgba(0,0,0,0.3);
+}
+
+.pane > .row {
+    height: 100%;
+}
+
+.slide.current {
+    opacity: 1.0;
+    left: 0;
+    z-index: 1;
+}
+
+.slide.prev {
+    left: -100%;
+    opacity: 0.5;
+}
+
+.slide.next {
+    left: 100%;
+    opacity: 0.5;
+}
+
+html {
 	font-family: sans-serif;
 }
 
@@ -52,13 +136,16 @@ body {
         <div class="jumbotron">
           <h1 class="display-3">Documents for Digital Era</h1>
           <p class="lead">
-              Open source standard for digital documents.
+              Open source crypto container standard for digital documents.
               <!--Based on widely proved crypto algroithms. -->
           </p>
           <hr class="my-4">
           <p>
               Created for people and machines. Ready for Web, Blockchain and IoT. No more paper.
           </p>
+          <!--<p class="lead">-->
+          <!--  <a class="btn btn-primary btn-lg" href="#demo" role="button">Try Demo</a>-->
+          <!--</p>-->
         </div>
 
         <div class="row" id="about">
@@ -137,6 +224,106 @@ body {
             </div>
         </div>
 
+        <div class="slideshow">
+            <div id="slides" class="slides">
+                <div class="step slide current">
+                    <div class="pane">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <h1>Container</h1>
+                                <p>
+                                    CryptoDoc is a container. It's pretty lighweight. It provides strict predictable data structure.
+                                    It consist of:
+                                </p>
+                                <ul>
+                                    <li>
+                                        Data
+                                    </li>
+                                    <li>
+                                        Signature
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <img src="/images/container-common.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step slide">
+                    <div class="pane">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <h1>Data</h1>
+                                <p>
+                                    CryptoDoc is a container. It's pretty lighweight. It provides strict predictable data structure.
+                                    It consist of:
+                                </p>
+                                <ul>
+                                    <li>
+                                        Data in JSON or XML
+                                    </li>
+                                    <li>
+                                        Photo or 3D model of face.
+                                    </li>
+                                    <li>
+                                        Any applicable data: image, audio, video, word, pdf.
+                                    </li>
+                                    <li>
+                                        Code, Smart Contract.
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <img src="/images/container-data.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step slide">
+                    <div class="pane">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <h1>Signature</h1>
+                                <p>
+                                    One of the most useful and powerful thing of CryptoDoc is signature.
+                                    Data could be signed by one or multiple signatures.
+                                    Each signature can be verified by chain of signatures.
+                                </p>
+                                <ul>
+                                    <li>
+                                        Single, multiple or collective.
+                                    </li>
+                                    <li>
+                                        Personal or verified by other signatures.
+                                    </li>
+                                    <li>
+                                        Any of primitive: EDDSA, FIPS, CIP e-Sign, GOST.
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <img src="/images/container-signature.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="position-indicator"></div>
+            </div>
+            <div class="row slideshow-controls">
+                <div class="col-6 offset-3 text-center">
+                    <div class="btn-group">
+                        <button class="btn btn-outline-dark btn-sm prev-slide">Prev</button>
+                        <button class="btn btn-outline-dark btn-sm next-slide">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
          <div class="row">
             <div class="col-md-8">
                 <h4>Goal</h4>
@@ -186,10 +373,10 @@ body {
                       <div class="card-body">
                         <h4 class="card-title">Announcements</h4>
                         <p class="card-text">All annotations, announcements and news taking place in telegram channel @CryptoDocWG</p>
-                        <a href="https://t.me/CryptoDocOrg" class="btn btn-primary">
+                        <a href="https://t.me/cryptodocwg" class="btn btn-primary">
                             Telegram
                         </a>
-                        <a href="https://twitter.com/CryptoDocOrg" class="btn btn-primary">
+                        <a href="https://twitter.com/cryptodocorg" class="btn btn-primary">
                             Twitter
                         </a>
                       </div>
@@ -201,7 +388,7 @@ body {
                       <div class="card-body">
                         <h4 class="card-title">Technical Discussion</h4>
                         <p class="card-text">Questions about development, implementation or draft discussions go in Slack CryptoDocWG workspace.</p>
-                        <a href="https://cryptodocorg.slack.com/messages" class="btn btn-primary">
+                        <a href="https://cryptodocwg.slack.com/messages" class="btn btn-primary">
                             Slack
                         </a>
                       </div>
@@ -621,7 +808,180 @@ body {
 })();
 
     </script>
-    <script id="/rumkin/cryptodoc-org/index.js" language="javascript">Bundler.define("/rumkin/cryptodoc-org/index.js", function(module, exports, require, __filename, __dirname) {"use strict";
+    <script id="/rumkin/slides/index.js" language="javascript">Bundler.define("/rumkin/slides/index.js", function(module, exports, require, __filename, __dirname) {'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = slideShow;
+function addClass(el, classname) {
+    const exists = el.className.split(/\s+/).find(item => item === classname);
+
+    if (!exists) {
+        el.className += ' ' + classname;
+    }
+}
+
+function removeClass(el, classname) {
+    el.className = el.className.split(/\s+/).filter(item => item !== classname).join(' ');
+}
+
+function setClassName(el, className) {
+    if (el.className !== className) {
+        el.className = className;
+    }
+}
+
+function slideShow(el, { slideClass = 'slide' } = {}) {
+    if (typeof el === "string") {
+        el = document.getElementById(el);
+    }
+
+    const id = el.id;
+
+    const NEXT = `next`;
+    const PREV = `prev`;
+    const CURRENT = `current`;
+    const TRANSIT = `transit`;
+
+    const slides = [...el.querySelectorAll('.' + slideClass)];
+
+    const state = {
+        current: 0,
+        count: slides.length,
+        slides
+    };
+
+    const show = (n, transit = false) => {
+
+        state.slides.forEach((slide, i) => {
+            if (i < n) {
+                addClass(slide, PREV);
+                removeClass(slide, CURRENT);
+                removeClass(slide, NEXT);
+            } else if (i === n) {
+                addClass(slide, CURRENT);
+                removeClass(slide, PREV);
+                removeClass(slide, NEXT);
+            } else {
+                addClass(slide, NEXT);
+                removeClass(slide, PREV);
+                removeClass(slide, CURRENT);
+            }
+
+            if (transit) {
+                addClass(slide, TRANSIT);
+            }
+        });
+    };
+
+    let n = 0;
+
+    if (id && location.hash) {
+        const hash = location.hash.slice(1);
+        if (hash.slice(0, id.length) === id) {
+            const slide = parseInt(hash.slice(id.length));
+
+            if (!isNaN(slide)) {
+                n = slide - 1;
+            }
+        }
+    }
+
+    state.current = n;
+    show(n, false);
+
+    return {
+        get element() {
+            return el;
+        },
+
+        get current() {
+            return state.current;
+        },
+
+        get count() {
+            return state.count;
+        },
+
+        next() {
+            const cur = state.current;
+            if (cur === state.count - 1) {
+                return;
+            }
+
+            show(cur + 1, true);
+            state.current = cur + 1;
+
+            if (id) {
+                window.location.hash = id + (cur + 2);
+            }
+        },
+
+        prev() {
+            const cur = state.current;
+            if (cur < 1) {
+                return;
+            }
+
+            show(cur - 1, true);
+            state.current = cur - 1;
+
+            if (id) {
+                window.location.hash = id + cur;
+            }
+        }
+    };
+}
+});
+    </script>
+    <script id="/rumkin/slides/test/test.js" language="javascript">Bundler.define("/rumkin/slides/test/test.js", function(module, exports, require, __filename, __dirname) {'use strict';
+
+var _ = require('..');
+
+var _2 = _interopRequireDefault(_);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+describe('Is true', function () {
+    it('Should be true', function () {
+        should(_2.default).be.equal(true);
+    });
+});
+});
+    </script>
+    <script id="/rumkin/cryptodoc-org/index.js" language="javascript">Bundler.define("/rumkin/cryptodoc-org/index.js", function(module, exports, require, __filename, __dirname) {'use strict';
+
+var _slides = require('rumkin/slides');
+
+var _slides2 = _interopRequireDefault(_slides);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const slidesEl = document.querySelector('.slideshow');
+const slides = (0, _slides2.default)('slides');
+
+const posIndicator = slidesEl.querySelector('.position-indicator');
+
+const showPosition = () => {
+    const rect = slides.element.getBoundingClientRect();
+    const width = 100 / slides.count;
+
+    posIndicator.style.width = `${width}%`;
+    posIndicator.style.left = `${slides.current * width}%`;
+};
+
+slidesEl.querySelector('.prev-slide').onclick = () => {
+    slides.prev();
+    showPosition();
+};
+
+slidesEl.querySelector('.next-slide').onclick = () => {
+    slides.next();
+    showPosition();
+};
+
+showPosition();
 });
     </script>
     <script id="/index.js" language="javascript">Bundler.require("rumkin/cryptodoc-org");
