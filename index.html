@@ -57,7 +57,7 @@
 }
 
 .transit {
-    transition: left 1s, opacity 1s;
+    transition: left 1s, opacity 1s, height 1s;
 }
 
 .pane {
@@ -72,6 +72,7 @@
 
 .pane > .row {
     height: 100%;
+    min-height: 400px;
 }
 
 .pane img {
@@ -880,6 +881,10 @@ function slideShow(el, { slideClass = 'slide' } = {}) {
             }
 
             height = Math.max(height, slide.offsetHeight);
+        });
+
+        state.slides.forEach(slide => {
+            slide.style.height = `${height}px`;
         });
 
         el.style.height = `${height}px`;
